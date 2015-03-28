@@ -63,10 +63,6 @@ int main()
 bool resolver(Tablero& p, int n)
 {
     // To do: resolver el sudoku!
-    /* Esta es la idea del codigo de 
-		el sudoku
-     */
-
 	return false;
 }
 
