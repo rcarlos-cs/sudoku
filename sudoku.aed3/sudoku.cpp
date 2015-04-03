@@ -44,7 +44,9 @@ int main()
 		if(!sol){
 			cout << "El tablero no tene solucion...";
 		} else {
+			cout << "El tablero fue solucionado... ";
 			mostrar(p);
+
 		}
 		cout << endl;
 	}
@@ -63,7 +65,27 @@ int main()
 bool resolver(Tablero& p, int n)
 {
     // To do: resolver el sudoku!
-	return false;
+    bool res = true;
+    for (int i = 0; i < n*n; ++i)
+    {
+    	for (int j = 0; i < n*n; ++i)
+    	{
+    		for (int k = 1; i < n*n+1; ++i)
+    		{
+    			if ( p[i][j] == 0) // si p[i][j] esta vacia coloco k en ese lugar 
+    			{
+    				p[i][j] = k;	// k E [1..n]    			
+	    			if ( check( p, p[i][j]) == 2 ){ // veo si tiene repetidos en alguna fila o columna o cuadrante
+	    				p[i][j] = 0 ; 		// si pasa que hay repetido vuelvo a poner el cero, ACA ESTA BACKTRAKING (VUELTA ATRAZ)
+	    			}
+	    			if ( check( p, p[i][j]) == 1) {
+	    				res = res && true;
+	    			}
+    			}
+    		}
+    	}
+    }
+	return res ;
 }
 
 /**
